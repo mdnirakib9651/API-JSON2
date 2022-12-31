@@ -56,7 +56,10 @@ class _PostScreenState extends State<PostScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text("${photoMultiMdl.photoMdlList![index].title}" ?? ""),
-                        Image.
+                        Container(
+                          height: 500,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.network("${photoMultiMdl.photoMdlList![index].url}"))
                       ],
                     ),
                   );
