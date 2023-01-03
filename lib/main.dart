@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'FireBase/list_employee.dart';
+import 'FireBase/textfield.dart';
 import 'State Managment Provider/Post Provider/photo_provider.dart';
 import 'State Managment Provider/Screen/post_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<PhotoProvider>(create: (_) => PhotoProvider())
@@ -40,7 +45,18 @@ class _HomePageState extends State<HomePage> {
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => PostScreen()));
               },
-              child: Text("API 1"))
+              child: Text("API 1")),
+          ElevatedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AddPage()));
+              },
+              child: Text("FireStore DataBase")),
+
+          ElevatedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListPage()));
+              },
+              child: Text("Employee List")),
         ],
       ),
     );
